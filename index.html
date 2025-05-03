@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Health Checker</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Leaflet CSS - Free OpenStreetMap Library -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+  <!-- Leaflet JS - Free OpenStreetMap Library -->
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Community Health Tracker App</h1>
+    <p>" 🩺Your Pocket Doctor – Track 📝. Remind ⏰. Stay Healthy💪!"</p>
+  </header>
+      
+  <div class="form-container">
+    <h1>🤒 Not Feeling Great? Let's Track It Together 📊</h1>
+    
+    <form id="healthForm">
+      <!-- First Row of Symptoms -->
+      <div class="form-group">
+        <label><input type="checkbox" name="symptom" value="fever"> Fever</label><br>
+        <label for="FC">Select Condition:</label>
+        <select id="FC" name="FeverCondition">
+          <option value="" selected disabled hidden>Select fever Severity</option>
+          <option value="mild">Mild (99-100°F)</option>
+          <option value="moderate">Moderate (100-102°F)</option>
+          <option value="high">High (>102°F)</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label><input type="checkbox" name="symptom" value="cough"> Cough</label><br>
+        <label for="CT">Cough Type:</label>
+        <select id="CT" name="CoughType">
+          <option value="" selected disabled hidden>Select Cough Type</option>
+          <option value="dry">Dry Cough</option>
+          <option value="wet">Wet Cough (with mucus)</option>
+          <option value="persistent">Persistent Cough</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label><input type="checkbox" name="symptom" value="headache"> Headache</label><br>
+        <label for="HS">Headache:</label>
+        <select id="HS" name="HeadacheSeverity">
+          <option value="" selected disabled hidden>Select Headache Severity</option>
+          <option value="Bearable">Bearable pain</option>
+          <option value="Unbearable">Unbearable pain</option>
+        </select>
+      </div>
+      
+      <!-- Basic Symptoms -->
+      <div class="form-group">
+        <label><input type="checkbox" name="symptom" value="fatigue"> Fatigue</label>
+        <label><input type="checkbox" name="symptom" value="Body Rash"> Body Rash</label>
+        <label><input type="checkbox" name="symptom" value="Cold"> Cold (or Runny nose)</label>
+        <label><input type="checkbox" name="symptom" value="Vomiting"> Vomiting</label>
+      </div>
+      
+      <!-- Additional Symptoms -->
+      <div class="form-group">
+        <h3>Additional Symptoms:</h3>
+        <label><input type="checkbox" name="symptom" value="Sore Throat"> Sore Throat</label>
+        <label><input type="checkbox" name="symptom" value="Dizziness"> Dizziness</label>
+        <label><input type="checkbox" name="symptom" value="Nausea"> Nausea</label>
+        <label><input type="checkbox" name="symptom" value="Diarrhea"> Diarrhea</label>
+        <label><input type="checkbox" name="symptom" value="Chest Pain"> Chest Pain</label>
+        <label><input type="checkbox" name="symptom" value="Breathing Difficulty"> Breathing Difficulty</label>
+        <label><input type="checkbox" name="symptom" value="Joint Pain"> Joint Pain</label>
+        <label><input type="checkbox" name="symptom" value="Loss of Taste/Smell"> Loss of Taste/Smell</label>
+      </div>
+      
+      <!-- How long have symptoms persisted -->
+      <div class="form-group">
+        <label for="duration">How long have you had these symptoms?</label>
+        <select id="duration" name="SymptomDuration">
+          <option value="" selected disabled hidden>Select Duration</option>
+          <option value="1day">Less than 24 hours</option>
+          <option value="fewDays">Few days (2-3 days)</option>
+          <option value="oneWeek">About a week</option>
+          <option value="twoWeeks">More than a week</option>
+        </select>
+      </div>
+      
+      <button type="button" class="check-btn" onclick="checkHealth()">Check Health</button>
+      <div id="result" style="margin-top: 20px; font-weight: bold; color: green;"></div>
+      <div id="suggestions"></div>
+      
+      <!-- Location Services Section - Using OpenStreetMap (FREE) -->
+      <div class="location-services">
+        <h3>Find Healthcare Services Near You</h3>
+        <button type="button" class="location-btn" onclick="findNearbyServices()">Show Nearby Medical Services</button>
+        <div id="location-status"></div>
+        <div id="nearby-services"></div>
+        <div id="map"></div>
+      </div>
+      <iframe src="https://ketakipatil57.github.io/Community-Health-tracker/" width="100%" height="600" allow="geolocation" style="border:none;"></iframe>
+    </form>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>
